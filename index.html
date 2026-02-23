@@ -1,42 +1,44 @@
-<div id="dumbbell_carencias" style="width: 100%; height: 500px;"></div>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Carencias sociales (2008 vs 2018) - Dumbbell</title>
 
-<script type="text/javascript">
-  google.charts.load('current', {'packages':['corechart']});
-  google.charts.setOnLoadCallback(drawDumbbell);
+  <!-- Cargar Google Charts -->
+  <script src="https://www.gstatic.com/charts/loader.js"></script>
 
-  function drawDumbbell() {
+  <script>
+    google.charts.load('current', { packages: ['corechart'] });
+    google.charts.setOnLoadCallback(drawDumbbell);
 
-    var data = google.visualization.arrayToDataTable([
-      ['Carencia', '2008', '2018'],
-      ['Rezago educativo', 21.9, 16.9],
-      ['Acceso a servicios de salud', 38.4, 16.2],
-      ['Acceso a seguridad social', 65.0, 57.3],
-      ['Calidad y espacios vivienda', 17.7, 11.1],
-      ['Servicios básicos vivienda', 22.9, 19.8],
-      ['Acceso a alimentación', 21.7, 20.4]
-    ]);
+    function drawDumbbell() {
+      const data = google.visualization.arrayToDataTable([
+        ['Año', 'Rezago educativo', 'Acceso a servicios de salud', 'Acceso a seguridad social',
+         'Calidad y espacios de la vivienda', 'Servicios básicos en la vivienda', 'Acceso a la alimentación'],
+        ['2008', 21.9, 38.4, 65.0, 17.7, 22.9, 21.7],
+        ['2018', 16.9, 16.2, 57.3, 11.1, 19.8, 20.4]
+      ]);
 
-    var options = {
-      title: 'Carencias sociales (2008 vs 2018)',
-      legend: { position: 'top' },
-      pointSize: 8,
-      lineWidth: 2,
-      hAxis: {
-        title: 'Carencias'
-      },
-      vAxis: {
-        title: 'Porcentaje (%)'
-      },
-      series: {
-        0: { color: '#1f77b4' },  // 2008
-        1: { color: '#d62728' }   // 2018
-      }
-    };
+      const options = {
+        title: 'Carencias sociales (2008 vs 2018)',
+        legend: { position: 'top' },
+        pointSize: 8,
+        lineWidth: 3,
+        hAxis: { title: 'Año' },
+        vAxis: { title: 'Porcentaje de población con carencia (%)' }
+      };
 
-    var chart = new google.visualization.LineChart(
-      document.getElementById('dumbbell_carencias')
-    );
+      const chart = new google.visualization.LineChart(
+        document.getElementById('dumbbell_carencias')
+      );
+      chart.draw(data, options);
+    }
+  </script>
+</head>
 
-    chart.draw(data, options);
-  }
-</script>
+<body style="font-family: Arial, sans-serif;">
+  <h2>2) Carencias sociales (2008 vs 2018)</h2>
+  <div id="dumbbell_carencias" style="width: 100%; max-width: 1000px; height: 520px;"></div>
+</body>
+</html>
